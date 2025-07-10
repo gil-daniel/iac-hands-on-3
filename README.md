@@ -18,7 +18,7 @@ This project provisions a scalable Azure environment using modular Bicep templat
 
 # 📁 Project Structure
 
-``markdown
+```markdown
 iac-hands-on-3/
 ├── main.bicep              # Orchestrates all module deployments
 ├── parameters.json         # Input parameters (e.g., SSH public key)
@@ -30,7 +30,7 @@ iac-hands-on-3/
 │   └── vm-multi.bicep      # Multiple Linux VMs with extensions
 ├── README.md               # Project documentation
 └── CHANGELOG.md            # Version history
-``
+```
 # 🧪 How to Deploy
 
 Before you start:
@@ -40,18 +40,18 @@ Before you start:
     Make sure your parameters.json file contains a valid SSH public key
 
 Run this command from the root of the project:
-``bash
+```bash
 az deployment group create \
   --resource-group rg-iac-lab \
   --template-file main.bicep \
   --parameters @parameters.json
-``
+```
 # 🌐 Accessing the Application
 
 After deployment, access the public IP output from the deployment:
-``bash
+```bash
 curl http://<public-ip>
-``
+```
 You should see a custom NGINX page showing the instance name (e.g., nginxvm-0, nginxvm-1), confirming load balancing is working.
 # 🔐 Security Considerations
 
@@ -66,9 +66,9 @@ You should see a custom NGINX page showing the instance name (e.g., nginxvm-0, n
 # ⚙️ Parameters File
 
 This project uses parameters.json, which is ignored by Git. Clone the example file below to provide your own inputs:
-``bash
+```bash
 cp parameters.example.json parameters.json
-``
+```
 # 🛠️ Tech Stack
 
     Azure Bicep (modular architecture)
