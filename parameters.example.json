@@ -1,0 +1,19 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "adminPublicKey": {
+      "value": "ssh-ed25519 AAAA...replace-with-your-public-key"
+    },
+    "adminUsername": {
+      "value": "azureuser"
+    },
+    "vmName": {
+      "value": "vm-example"
+    },
+    "vmSize": {
+      "value": "Standard_B1s"
+    }
+  }
+}
+

@@ -1,0 +1,32 @@
+name: 🧱 Bicep Build & Lint Check
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate-bicep:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: ⏬ Checkout repository
+        uses: actions/checkout@v3
+
+      - name: 🔧 Install Bicep CLI
+        run: |
+          az bicep install
+          az bicep upgrade
+
+      - name: 🔍 Lint & build all Bicep files
+        run: |
+          echo "🔄 Validating modules and templates..."
+          for file in $(find . -name "*.bicep"); do
+            echo "🔍 Checking $file"
+            az bicep build --file "$file"
+          done
+
+      - name: ✅ Build main.bicep separately (just to be sure)
+        run: |
+          az bicep build --file main.bicep
